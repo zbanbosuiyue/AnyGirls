@@ -1,0 +1,654 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13BBAE8EAA0D2E96851E37E3 /* Pods_AnyGirls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6C29D1A8336E210E18AB84 /* Pods_AnyGirls.framework */; };
+		172BDEB61C75AF340039D98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEB51C75AF340039D98C /* AppDelegate.swift */; };
+		172BDEBB1C75AF340039D98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172BDEB91C75AF340039D98C /* Main.storyboard */; };
+		172BDEBD1C75AF340039D98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 172BDEBC1C75AF340039D98C /* Assets.xcassets */; };
+		172BDEC01C75AF340039D98C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172BDEBE1C75AF340039D98C /* LaunchScreen.storyboard */; };
+		172BDECB1C75AF340039D98C /* AnyGirlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDECA1C75AF340039D98C /* AnyGirlsTests.swift */; };
+		172BDED61C75AF340039D98C /* AnyGirlsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDED51C75AF340039D98C /* AnyGirlsUITests.swift */; };
+		172BDEE81C75B20F0039D98C /* TopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEE71C75B20F0039D98C /* TopMenuView.swift */; };
+		172BDEEC1C75B3520039D98C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEEB1C75B3520039D98C /* Header.swift */; };
+		172BDEEE1C75B4670039D98C /* TopMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEED1C75B4670039D98C /* TopMenuViewCell.swift */; };
+		172BDEF81C75CB340039D98C /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEF71C75CB340039D98C /* MainCollectionViewController.swift */; };
+		172BDEFE1C75CDA20039D98C /* BrowserCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFA1C75CDA20039D98C /* BrowserCellDelegate.swift */; };
+		172BDEFF1C75CDA20039D98C /* RMDownloadIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFB1C75CDA20039D98C /* RMDownloadIndicator.swift */; };
+		172BDF001C75CDA20039D98C /* PhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFC1C75CDA20039D98C /* PhotoBrowserCell.swift */; };
+		172BDF011C75CDA20039D98C /* PhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */; };
+		172BDF031C75CE470039D98C /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		172BDEC71C75AF340039D98C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 172BDEAA1C75AF340039D98C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 172BDEB11C75AF340039D98C;
+			remoteInfo = AnyGirls;
+		};
+		172BDED21C75AF340039D98C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 172BDEAA1C75AF340039D98C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 172BDEB11C75AF340039D98C;
+			remoteInfo = AnyGirls;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0233A9075153C2911B9D87C5 /* Pods-AnyGirls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyGirls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyGirls/Pods-AnyGirls.debug.xcconfig"; sourceTree = "<group>"; };
+		172BDEB21C75AF340039D98C /* AnyGirls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyGirls.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		172BDEB51C75AF340039D98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		172BDEBA1C75AF340039D98C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		172BDEBC1C75AF340039D98C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		172BDEBF1C75AF340039D98C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		172BDEC11C75AF340039D98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		172BDEC61C75AF340039D98C /* AnyGirlsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyGirlsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		172BDECA1C75AF340039D98C /* AnyGirlsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGirlsTests.swift; sourceTree = "<group>"; };
+		172BDECC1C75AF340039D98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		172BDED11C75AF340039D98C /* AnyGirlsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyGirlsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		172BDED51C75AF340039D98C /* AnyGirlsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGirlsUITests.swift; sourceTree = "<group>"; };
+		172BDED71C75AF340039D98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		172BDEE71C75B20F0039D98C /* TopMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuView.swift; sourceTree = "<group>"; };
+		172BDEEB1C75B3520039D98C /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		172BDEED1C75B4670039D98C /* TopMenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewCell.swift; sourceTree = "<group>"; };
+		172BDEF71C75CB340039D98C /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		172BDEFA1C75CDA20039D98C /* BrowserCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserCellDelegate.swift; sourceTree = "<group>"; };
+		172BDEFB1C75CDA20039D98C /* RMDownloadIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMDownloadIndicator.swift; sourceTree = "<group>"; };
+		172BDEFC1C75CDA20039D98C /* PhotoBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserCell.swift; sourceTree = "<group>"; };
+		172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserView.swift; sourceTree = "<group>"; };
+		172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		B12AB556BBCAFFFADFB17FE9 /* Pods-AnyGirls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyGirls.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyGirls/Pods-AnyGirls.release.xcconfig"; sourceTree = "<group>"; };
+		CF6C29D1A8336E210E18AB84 /* Pods_AnyGirls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyGirls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		172BDEAF1C75AF340039D98C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13BBAE8EAA0D2E96851E37E3 /* Pods_AnyGirls.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172BDEC31C75AF340039D98C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172BDECE1C75AF340039D98C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		172BDEA91C75AF340039D98C = {
+			isa = PBXGroup;
+			children = (
+				172BDEB41C75AF340039D98C /* AnyGirls */,
+				172BDEC91C75AF340039D98C /* AnyGirlsTests */,
+				172BDED41C75AF340039D98C /* AnyGirlsUITests */,
+				172BDEB31C75AF340039D98C /* Products */,
+				4B69C4198FB0A491310AB0A6 /* Pods */,
+				3E12747ECE35762B391DA0E7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		172BDEB31C75AF340039D98C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				172BDEB21C75AF340039D98C /* AnyGirls.app */,
+				172BDEC61C75AF340039D98C /* AnyGirlsTests.xctest */,
+				172BDED11C75AF340039D98C /* AnyGirlsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		172BDEB41C75AF340039D98C /* AnyGirls */ = {
+			isa = PBXGroup;
+			children = (
+				172BDEEB1C75B3520039D98C /* Header.swift */,
+				172BDEF91C75CD850039D98C /* Browser */,
+				172BDEF61C75CB0D0039D98C /* Controller */,
+				172BDEE31C75B1190039D98C /* TopScrollMenu */,
+				172BDEB51C75AF340039D98C /* AppDelegate.swift */,
+				172BDEB91C75AF340039D98C /* Main.storyboard */,
+				172BDEBC1C75AF340039D98C /* Assets.xcassets */,
+				172BDEBE1C75AF340039D98C /* LaunchScreen.storyboard */,
+				172BDEC11C75AF340039D98C /* Info.plist */,
+			);
+			path = AnyGirls;
+			sourceTree = "<group>";
+		};
+		172BDEC91C75AF340039D98C /* AnyGirlsTests */ = {
+			isa = PBXGroup;
+			children = (
+				172BDECA1C75AF340039D98C /* AnyGirlsTests.swift */,
+				172BDECC1C75AF340039D98C /* Info.plist */,
+			);
+			path = AnyGirlsTests;
+			sourceTree = "<group>";
+		};
+		172BDED41C75AF340039D98C /* AnyGirlsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				172BDED51C75AF340039D98C /* AnyGirlsUITests.swift */,
+				172BDED71C75AF340039D98C /* Info.plist */,
+			);
+			path = AnyGirlsUITests;
+			sourceTree = "<group>";
+		};
+		172BDEE31C75B1190039D98C /* TopScrollMenu */ = {
+			isa = PBXGroup;
+			children = (
+				172BDEED1C75B4670039D98C /* TopMenuViewCell.swift */,
+				172BDEE71C75B20F0039D98C /* TopMenuView.swift */,
+			);
+			name = TopScrollMenu;
+			sourceTree = "<group>";
+		};
+		172BDEF61C75CB0D0039D98C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				172BDEF71C75CB340039D98C /* MainCollectionViewController.swift */,
+				172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		172BDEF91C75CD850039D98C /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				172BDEFA1C75CDA20039D98C /* BrowserCellDelegate.swift */,
+				172BDEFB1C75CDA20039D98C /* RMDownloadIndicator.swift */,
+				172BDEFC1C75CDA20039D98C /* PhotoBrowserCell.swift */,
+				172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */,
+			);
+			name = Browser;
+			sourceTree = "<group>";
+		};
+		3E12747ECE35762B391DA0E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF6C29D1A8336E210E18AB84 /* Pods_AnyGirls.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4B69C4198FB0A491310AB0A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0233A9075153C2911B9D87C5 /* Pods-AnyGirls.debug.xcconfig */,
+				B12AB556BBCAFFFADFB17FE9 /* Pods-AnyGirls.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		172BDEB11C75AF340039D98C /* AnyGirls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 172BDEDA1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirls" */;
+			buildPhases = (
+				1CB4E5BFFA35AD0DBF695F0A /* Check Pods Manifest.lock */,
+				172BDEAE1C75AF340039D98C /* Sources */,
+				172BDEAF1C75AF340039D98C /* Frameworks */,
+				172BDEB01C75AF340039D98C /* Resources */,
+				823759EC90EC5851D64F9E58 /* Embed Pods Frameworks */,
+				0602C6267D704C981C144A42 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnyGirls;
+			productName = AnyGirls;
+			productReference = 172BDEB21C75AF340039D98C /* AnyGirls.app */;
+			productType = "com.apple.product-type.application";
+		};
+		172BDEC51C75AF340039D98C /* AnyGirlsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 172BDEDD1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsTests" */;
+			buildPhases = (
+				172BDEC21C75AF340039D98C /* Sources */,
+				172BDEC31C75AF340039D98C /* Frameworks */,
+				172BDEC41C75AF340039D98C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				172BDEC81C75AF340039D98C /* PBXTargetDependency */,
+			);
+			name = AnyGirlsTests;
+			productName = AnyGirlsTests;
+			productReference = 172BDEC61C75AF340039D98C /* AnyGirlsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		172BDED01C75AF340039D98C /* AnyGirlsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 172BDEE01C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsUITests" */;
+			buildPhases = (
+				172BDECD1C75AF340039D98C /* Sources */,
+				172BDECE1C75AF340039D98C /* Frameworks */,
+				172BDECF1C75AF340039D98C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				172BDED31C75AF340039D98C /* PBXTargetDependency */,
+			);
+			name = AnyGirlsUITests;
+			productName = AnyGirlsUITests;
+			productReference = 172BDED11C75AF340039D98C /* AnyGirlsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		172BDEAA1C75AF340039D98C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Rong Zheng";
+				TargetAttributes = {
+					172BDEB11C75AF340039D98C = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3XWJ78TLXJ;
+					};
+					172BDEC51C75AF340039D98C = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 172BDEB11C75AF340039D98C;
+					};
+					172BDED01C75AF340039D98C = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 172BDEB11C75AF340039D98C;
+					};
+				};
+			};
+			buildConfigurationList = 172BDEAD1C75AF340039D98C /* Build configuration list for PBXProject "AnyGirls" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 172BDEA91C75AF340039D98C;
+			productRefGroup = 172BDEB31C75AF340039D98C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				172BDEB11C75AF340039D98C /* AnyGirls */,
+				172BDEC51C75AF340039D98C /* AnyGirlsTests */,
+				172BDED01C75AF340039D98C /* AnyGirlsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		172BDEB01C75AF340039D98C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172BDEC01C75AF340039D98C /* LaunchScreen.storyboard in Resources */,
+				172BDEBD1C75AF340039D98C /* Assets.xcassets in Resources */,
+				172BDEBB1C75AF340039D98C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172BDEC41C75AF340039D98C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172BDECF1C75AF340039D98C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0602C6267D704C981C144A42 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyGirls/Pods-AnyGirls-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1CB4E5BFFA35AD0DBF695F0A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		823759EC90EC5851D64F9E58 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyGirls/Pods-AnyGirls-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		172BDEAE1C75AF340039D98C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172BDEEC1C75B3520039D98C /* Header.swift in Sources */,
+				172BDF001C75CDA20039D98C /* PhotoBrowserCell.swift in Sources */,
+				172BDEFE1C75CDA20039D98C /* BrowserCellDelegate.swift in Sources */,
+				172BDEE81C75B20F0039D98C /* TopMenuView.swift in Sources */,
+				172BDF031C75CE470039D98C /* MainCollectionViewCell.swift in Sources */,
+				172BDEFF1C75CDA20039D98C /* RMDownloadIndicator.swift in Sources */,
+				172BDF011C75CDA20039D98C /* PhotoBrowserView.swift in Sources */,
+				172BDEEE1C75B4670039D98C /* TopMenuViewCell.swift in Sources */,
+				172BDEF81C75CB340039D98C /* MainCollectionViewController.swift in Sources */,
+				172BDEB61C75AF340039D98C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172BDEC21C75AF340039D98C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172BDECB1C75AF340039D98C /* AnyGirlsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		172BDECD1C75AF340039D98C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172BDED61C75AF340039D98C /* AnyGirlsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		172BDEC81C75AF340039D98C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 172BDEB11C75AF340039D98C /* AnyGirls */;
+			targetProxy = 172BDEC71C75AF340039D98C /* PBXContainerItemProxy */;
+		};
+		172BDED31C75AF340039D98C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 172BDEB11C75AF340039D98C /* AnyGirls */;
+			targetProxy = 172BDED21C75AF340039D98C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		172BDEB91C75AF340039D98C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				172BDEBA1C75AF340039D98C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		172BDEBE1C75AF340039D98C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				172BDEBF1C75AF340039D98C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		172BDED81C75AF340039D98C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		172BDED91C75AF340039D98C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		172BDEDB1C75AF340039D98C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0233A9075153C2911B9D87C5 /* Pods-AnyGirls.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = AnyGirls/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.6lovely.AnyGirls;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		172BDEDC1C75AF340039D98C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B12AB556BBCAFFFADFB17FE9 /* Pods-AnyGirls.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = AnyGirls/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.6lovely.AnyGirls;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		172BDEDE1C75AF340039D98C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AnyGirlsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyGirls.app/AnyGirls";
+			};
+			name = Debug;
+		};
+		172BDEDF1C75AF340039D98C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AnyGirlsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyGirls.app/AnyGirls";
+			};
+			name = Release;
+		};
+		172BDEE11C75AF340039D98C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AnyGirlsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AnyGirls;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		172BDEE21C75AF340039D98C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AnyGirlsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AnyGirls;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		172BDEAD1C75AF340039D98C /* Build configuration list for PBXProject "AnyGirls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172BDED81C75AF340039D98C /* Debug */,
+				172BDED91C75AF340039D98C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		172BDEDA1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172BDEDB1C75AF340039D98C /* Debug */,
+				172BDEDC1C75AF340039D98C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		172BDEDD1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172BDEDE1C75AF340039D98C /* Debug */,
+				172BDEDF1C75AF340039D98C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		172BDEE01C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172BDEE11C75AF340039D98C /* Debug */,
+				172BDEE21C75AF340039D98C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 172BDEAA1C75AF340039D98C /* Project object */;
+}
