@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0465B5C23C1ADEDD1E3EC92447A7147D55A898F9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0465B5C23C1ADEDD1E3EC92447A7147D55A898F9" : 0,
+    "984C49CF58E3BA40D0631617505A2DE62A9247C5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C27337B5-B082-4A40-B235-535225577288",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0465B5C23C1ADEDD1E3EC92447A7147D55A898F9" : "AnyGirls\/",
+    "984C49CF58E3BA40D0631617505A2DE62A9247C5" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AnyGirls",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AnyGirls.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zbanbosuiyue\/AnyGirls.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0465B5C23C1ADEDD1E3EC92447A7147D55A898F9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zbanbosuiyue\/IOSDev.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "984C49CF58E3BA40D0631617505A2DE62A9247C5"
+    }
+  ]
+}
