@@ -44,8 +44,8 @@ extension UIColor {
 
 // Pics Classify
 enum PageType: String {
-    case boobs = "2" //1
-    case booty  = "6"  //2
+    //case boobs = "2" //1
+    //case booty  = "6"  //2
     case stocking = "7"    //3
     case legs  = "3"    //4
     case face = "4" //5
@@ -62,20 +62,21 @@ class PhotoUtil {
     // Use Int to get PageType
     static func selectTypeByNumber(number: Int)->PageType{
         switch number{
-        case 0:
+/*        case 0:
             return .boobs
         case 1:
             return .booty
-        case 2:
+*/
+        case 1:
             return .stocking
-        case 3:
+        case 2:
             return .legs
-        case 4:
+        case 0:
             return .face
-        case 5:
+        case 3:
             return .random
         default:
-            return .boobs
+            return .face
         }
     }
 }

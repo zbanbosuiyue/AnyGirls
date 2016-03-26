@@ -23,11 +23,11 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     var photos = NSMutableOrderedSet()
     var photosBig = NSMutableOrderedSet()
     //    var layout: MainCollectionViewLayout?
-    var populatingPhotos = false //isPopulating
-    var currentPage = 2 //PageIndexLocater
+    var populatingPhotos = true //isPopulating
+    var currentPage = Int(arc4random_uniform(60) + 2) //PageIndexLocater
     var isGot = false   //Is Got Data
     var menuView:TopMenuView!
-    var currentType: PageType = .boobs
+    var currentType: PageType = PageType.face
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         menuView.lineColor = UIColor.grayColor()
         menuView.delegate = self
         //Set Menu Titles
-        menuView.titles = [" Boobs ", " Booty ", " Stocking ", " Legs ", " Face ", " Random "]
+        menuView.titles = [" Face ", " Stocking ", " Legs ", " Random "]
         
         //Close Scrolltotop
         menuView.setScrollToTop(false)
@@ -80,16 +80,17 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         self.view.addSubview(menuView)
     }
     
-    //  Clicke Trigger
+    //  Click Trigger
     func topMenuDidChangedToIndex(index:Int){
+        print("Press \(index)")
         self.navigationItem.title = self.menuView.titles[index] as String
         
         currentType = PhotoUtil.selectTypeByNumber(index)
         
         photos.removeAllObjects()
         photosBig.removeAllObjects()
-        // Clear All Pics and Return to Page 2
-        self.currentPage = 2
+        // Clear All Pics and Return to Page X
+        self.currentPage = Int(arc4random_uniform(60) + 2)
         
         self.collectionView?.reloadData()
         
@@ -97,15 +98,16 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func configureRefresh(){
-        self.collectionView?.mj_header = MJRefreshNormalHeader(refreshingBlock: { () in
-            //print("header")
-            self.handleRefresh()
-            self.collectionView?.mj_header.endRefreshing()
+        self.collectionView?.mj_header = MJRefreshNormalHeader(refreshingBlock:
+            { () in
+                print("header")
+                self.handleRefresh()
+                self.collectionView?.mj_header.endRefreshing()
         })
         
         self.collectionView?.mj_footer = MJRefreshAutoFooter(refreshingBlock:
             { () in
-                //print("footer")
+                print("footer")
                 self.populatePhotos()
                 self.collectionView?.mj_footer.endRefreshing()
         })
@@ -117,10 +119,10 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     
     func setupView() {
         // Set Title
-        self.navigationItem.title = "GIRL FINDER"
+        self.navigationItem.title = "Any Girls"
         self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 0)
         self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         self.collectionView?.scrollsToTop = true
         self.collectionView?.frame = CGRectMake(10, 0, self.view.frame.width - 20, self.view.frame.height)
@@ -181,7 +183,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     func handleRefresh() {
         photos.removeAllObjects()
         // Clear All Pics
-        self.currentPage = 2
+        self.currentPage = Int(arc4random_uniform(60) + 2)
         self.collectionView?.reloadData()
         
         populatePhotos()
@@ -222,22 +224,26 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     // Get Photos From Web
     func populatePhotos(){
         if populatingPhotos{//If is populating, then skip
+            print("Populating")
             return
         }
-        
+        print("a")
         // If isnot populating, then do
         populatingPhotos = true
         let pageUrl = getPageUrl()
+        
         Alamofire.request(.GET, pageUrl).validate().responseString{
             (response) in
-            
+            print("b")
             //
             let isSuccess = response.result.isSuccess
             let html = response.result.value
             let HUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
+
             
             if isSuccess == true{
                 // Waiting Sign
+                print("123")
 
                 HUD.textLabel.text = "Loading"
                 HUD.showInView(self.view, animated: true)
@@ -285,9 +291,11 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
             
             //Clear HUB
             //            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            print("abc")
             HUD.dismiss()
             self.populatingPhotos = false
         }
+        print("c");
     }
     
     // Show big pics
