@@ -87,7 +87,7 @@
         // 2.格式化日期
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         if ([cmp1 day] == [cmp2 day]) { // 今天
-            formatter.dateFormat = @"Today HH:mm";
+            formatter.dateFormat = @"今天 HH:mm";
         } else if ([cmp1 year] == [cmp2 year]) { // 今年
             formatter.dateFormat = @"MM-dd HH:mm";
         } else {
@@ -96,9 +96,9 @@
         NSString *time = [formatter stringFromDate:lastUpdatedTime];
         
         // 3.显示日期
-        self.lastUpdatedTimeLabel.text = [NSString stringWithFormat:@"Last Update：%@", time];
+        self.lastUpdatedTimeLabel.text = [NSString stringWithFormat:@"最后更新：%@", time];
     } else {
-        self.lastUpdatedTimeLabel.text = @"Last Updata：No Record";
+        self.lastUpdatedTimeLabel.text = @"最后更新：无记录";
     }
 }
 

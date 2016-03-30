@@ -51,6 +51,7 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
     }
 
     override init(frame: CGRect) {
+        print("init")
         super.init(frame: frame)
         setupView(frame)
     }
@@ -58,7 +59,9 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
     //Init
     class func initWithPhotos(withUrlArray array: [AnyObject])-> PhotoBrowserView{
         let view = PhotoBrowserView(frame: (UIApplication.sharedApplication().keyWindow?.frame)!)
+        //print("\((UIApplication.sharedApplication().keyWindow?.frame))")
         view.photos.addObjectsFromArray(array)
+        print("initWithPhotos")
         return view
     }
     
@@ -91,6 +94,7 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         addTitleLabel(frame)
 //        addCloseBtn(frame)
         addDownloadButton(frame)
+        //print("setupViewEnd")
     }
     
     //Add TitleLabel
@@ -169,23 +173,7 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         return CGFloat(0)
     }
     
-    // Show Message
-    func showSuccessMsg(text: String, interval: Double){
-        let hud = JGProgressHUD(style: JGProgressHUDStyle.Light)
-        hud.textLabel.text = text
-        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-        hud.showInView(self, animated: true)
-        hud.dismissAfterDelay(interval, animated: true)
-    }
-    
-    func showErrorMsg(text: String, interval: Double){
-        let hud = JGProgressHUD(style: JGProgressHUDStyle.Light)
-        hud.textLabel.text = text
-        hud.indicatorView = JGProgressHUDErrorIndicatorView()
-        hud.showInView(self, animated: true)
-        hud.dismissAfterDelay(interval, animated: true)
-    }
-    
+
     func singleTap() {
         self.removeFromSuperview()
     }
@@ -197,12 +185,13 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         let url = NSURL(string: photos.objectAtIndex(indexPath.row) as! String)!
         let frame = cell.imageView.frame
         let percent: CGFloat = 0.8
+        cell.imageView.backgroundColor = UIColor.mainColor()
         cell.imageView.frame = CGRect(x: frame.width*(1 - percent)/2, y: frame.height*(1 - percent)/2, width: frame.width*percent, height: frame.height*percent)
         if sourceType == SourceType.REMOTE{
             //progress bar
             let mixedIndicator: RMDownloadIndicator = RMDownloadIndicator(rectframe: CGRectMake(CGRectGetWidth(self.bounds)/2 - 30, CGRectGetMaxY(self.bounds)/2 - 30, 60, 60), type: RMIndicatorType.kRMMixedIndictor)
             mixedIndicator.backgroundColor = UIColor.clearColor()
-            mixedIndicator.fillColor = UIColor.mainColor()
+            mixedIndicator.fillColor = UIColor.blueColor().colorWithAlphaComponent(0.1)
             mixedIndicator.strokeColor = UIColor.mainColor()
             mixedIndicator.closedIndicatorBackgroundStrokeColor = UIColor.mainColor()
             mixedIndicator.radiusPercent = 0.45
@@ -212,13 +201,22 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
                 //没有缓存过，加入progress bar
                 if received != 0{
                     if !self.subviews.contains(mixedIndicator){
+                        //print("bb")
                         self.addSubview(mixedIndicator)
                     }
                 }
                 
                 mixedIndicator.updateWithTotalBytes(CGFloat(total), downloadedBytes: CGFloat(received))
+                //print("load")
+                
                 }, completed: { (image, error, cacheType, url) -> Void in
+                    
+                    mixedIndicator.removeFromSuperview()
                     if image == nil{
+                        print("Error")
+                        cell.imageView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+                        self.showErrorMsg("Network Error", interval: 1.5)
+                        
                         return
                     }
                 })
@@ -237,4 +235,22 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         
         return cell
     }
+    
+    // Show Message
+    func showSuccessMsg(text: String, interval: Double){
+        let hud = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        hud.textLabel.text = text
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.showInView(self, animated: true)
+        hud.dismissAfterDelay(interval, animated: true)
+    }
+    
+    func showErrorMsg(text: String, interval: Double){
+        let hud = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        hud.textLabel.text = text
+        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        hud.showInView(self, animated: true)
+        hud.dismissAfterDelay(interval, animated: true)
+    }
+
 }

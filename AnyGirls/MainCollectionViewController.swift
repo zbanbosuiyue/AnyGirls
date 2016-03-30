@@ -23,16 +23,30 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     var photos = NSMutableOrderedSet()
     var photosBig = NSMutableOrderedSet()
     //    var layout: MainCollectionViewLayout?
-    var populatingPhotos = true //isPopulating
+    
+    var isFinished = false
+    var populatingPhotos = false{
+        didSet{
+            if !populatingPhotos{
+                print("changed")
+                isFinished = true
+            }
+            else{
+                print("changing")
+                isFinished = false
+            }
+        }
+    }
     var currentPage = Int(arc4random_uniform(60) + 2) //PageIndexLocater
     var isGot = false   //Is Got Data
     var menuView:TopMenuView!
     var currentType: PageType = PageType.face
     
+    var timer = NSTimer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // LanuchScreen Show 1s
         configureRefresh()
         
         // InitTopMenu
@@ -100,16 +114,26 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     func configureRefresh(){
         self.collectionView?.mj_header = MJRefreshNormalHeader(refreshingBlock:
             { () in
-                print("header")
-                self.handleRefresh()
-                self.collectionView?.mj_header.endRefreshing()
+                if self.isFinished{
+                    print("header")
+                    self.handleRefresh()
+                    self.collectionView?.mj_header.endRefreshing()
+                } else{
+                        self.collectionView?.mj_header.endRefreshing()
+                    self.showMessage("Wait For Loading", animate: 0.5)
+                }
         })
         
         self.collectionView?.mj_footer = MJRefreshAutoFooter(refreshingBlock:
             { () in
-                print("footer")
-                self.populatePhotos()
-                self.collectionView?.mj_footer.endRefreshing()
+                if self.isFinished{
+                    print("footer")
+                    self.populatePhotos()
+                    self.collectionView?.mj_footer.endRefreshing()
+                } else{
+                    self.collectionView?.mj_footer.endRefreshing()
+                    self.showMessage("Wait For Loading", animate: 0.5)
+                }
         })
     }
     
@@ -144,7 +168,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     func addBarItem(){
         let item = UIBarButtonItem(image: UIImage(named: "Del"), style: UIBarButtonItemStyle.Plain, target: self, action: "setting:")
         item.tintColor = UIColor.whiteColor()
-        
         self.navigationItem.rightBarButtonItem = item
     }
     
@@ -181,8 +204,10 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     
     //Bottom Pull Refresh
     func handleRefresh() {
-        photos.removeAllObjects()
         // Clear All Pics
+        photos.removeAllObjects()
+        photosBig.removeAllObjects()
+        
         self.currentPage = Int(arc4random_uniform(60) + 2)
         self.collectionView?.reloadData()
         
@@ -223,30 +248,23 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     
     // Get Photos From Web
     func populatePhotos(){
-        if populatingPhotos{//If is populating, then skip
-            print("Populating")
-            return
-        }
-        print("a")
-        // If isnot populating, then do
-        populatingPhotos = true
         let pageUrl = getPageUrl()
         
-        Alamofire.request(.GET, pageUrl).validate().responseString{
+        let HUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        HUD.textLabel.text = "Loading"
+        HUD.showInView(self.view, animated: true)
+        
+        self.populatingPhotos = true
+        
+        // Asychronize Request
+        Alamofire.request(.GET, pageUrl).responseString{
             (response) in
-            print("b")
-            //
+            self.populatingPhotos = false
             let isSuccess = response.result.isSuccess
             let html = response.result.value
-            let HUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
-
-            
+            //print(html)
             if isSuccess == true{
                 // Waiting Sign
-                print("123")
-
-                HUD.textLabel.text = "Loading"
-                HUD.showInView(self.view, animated: true)
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                     // Temp
                     var urls = [String]()
@@ -254,6 +272,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
                     if let doc = Kanna.HTML(html: html!, encoding: NSUTF8StringEncoding){
                         CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingASCII)
                         let lastItem = self.photos.count
+                        //print("lastItem \(lastItem)")
                         // Parse Images
                         for node in doc.css("img"){
                             if self.checkImageUrl(node["src"]){
@@ -267,8 +286,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
                             self.photos.addObjectsFromArray(urls)
                             self.transformUrl(urls)
                         }
-                        
-                        //Only refresh the pics adding
+                    
 
                         let indexPaths = (lastItem..<self.photos.count).map { NSIndexPath(forItem: $0, inSection: 0) }
                         dispatch_async(dispatch_get_main_queue()) {
@@ -281,22 +299,23 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
                     }
                 }
             }else{
-                
                 // let hud = JGProgressHUD(style: JGProgressHUDStyle.Light)
                 HUD.textLabel.text = "Network Error"
                 HUD.indicatorView = JGProgressHUDErrorIndicatorView()
                 HUD.showInView(self.view, animated: true)
-                HUD.dismissAfterDelay(1.0, animated: true)
             }
-            
-            //Clear HUB
-            //            MBProgressHUD.hideHUDForView(self.view, animated: true)
-            print("abc")
             HUD.dismiss()
-            self.populatingPhotos = false
         }
-        print("c");
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "delayAction:", userInfo: HUD, repeats: false)
     }
+    
+    func delayAction(timer: NSTimer){
+        let HUD = timer.userInfo as! JGProgressHUD
+        HUD.dismiss()
+    }
+    
+    
     
     // Show big pics
     //    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -314,6 +333,13 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: self.view.frame.width, height: topViewHeight + 10)
+    }
+    
+    func showMessage(message: String, animate: Double){
+        let HUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        HUD.textLabel.text = message
+        HUD.showInView(self.view, animated: true)
+        HUD.dismissAfterDelay(animate);
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

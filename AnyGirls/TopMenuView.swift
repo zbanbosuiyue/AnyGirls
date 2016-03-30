@@ -77,8 +77,6 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         
         // Register Cell
         self.collection?.registerClass(TopMenuViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        
     }
     
     override func layoutSubviews() {
@@ -104,9 +102,7 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
             
             if width < screenSize.width {
                 self.setCollectionFrame(cell.frame)
-                
             }
-            
         }
         return cell
     }
@@ -155,7 +151,6 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
             if !contains(visibleItem, value: lastIndexPath) || lastIndexPath.item == 0 {
                 self.collection?.scrollToItemAtIndexPath(lastIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
             }
-            
         }
     }
     
@@ -167,7 +162,6 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
                 return true
             }
         }
-        
         return false
     }
     

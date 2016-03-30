@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import JGProgressHUD
+import SDWebImage
 
 var statusHeight =  UIApplication.sharedApplication().statusBarFrame.size.height
 var screenSize = UIScreen.mainScreen().bounds.size
@@ -80,3 +82,7 @@ class PhotoUtil {
         }
     }
 }
+
+
+
+
