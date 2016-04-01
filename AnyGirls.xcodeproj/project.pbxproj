@@ -23,6 +23,7 @@
 		172BDF001C75CDA20039D98C /* PhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFC1C75CDA20039D98C /* PhotoBrowserCell.swift */; };
 		172BDF011C75CDA20039D98C /* PhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */; };
 		172BDF031C75CE470039D98C /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */; };
+		176FB8331CAE438C00762990 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176FB8321CAE438C00762990 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		172BDEFC1C75CDA20039D98C /* PhotoBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserCell.swift; sourceTree = "<group>"; };
 		172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserView.swift; sourceTree = "<group>"; };
 		172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		176FB8321CAE438C00762990 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B12AB556BBCAFFFADFB17FE9 /* Pods-AnyGirls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyGirls.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyGirls/Pods-AnyGirls.release.xcconfig"; sourceTree = "<group>"; };
 		CF6C29D1A8336E210E18AB84 /* Pods_AnyGirls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyGirls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 		172BDEB41C75AF340039D98C /* AnyGirls */ = {
 			isa = PBXGroup;
 			children = (
+				176FB82D1CAE423300762990 /* TableMenu */,
 				172BDEEB1C75B3520039D98C /* Header.swift */,
 				172BDEF91C75CD850039D98C /* Browser */,
 				172BDEF61C75CB0D0039D98C /* Controller */,
@@ -178,6 +181,14 @@
 				172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */,
 			);
 			name = Browser;
+			sourceTree = "<group>";
+		};
+		176FB82D1CAE423300762990 /* TableMenu */ = {
+			isa = PBXGroup;
+			children = (
+				176FB8321CAE438C00762990 /* TableViewController.swift */,
+			);
+			name = TableMenu;
 			sourceTree = "<group>";
 		};
 		3E12747ECE35762B391DA0E7 /* Frameworks */ = {
@@ -386,6 +397,7 @@
 				172BDEE81C75B20F0039D98C /* TopMenuView.swift in Sources */,
 				172BDF031C75CE470039D98C /* MainCollectionViewCell.swift in Sources */,
 				172BDEFF1C75CDA20039D98C /* RMDownloadIndicator.swift in Sources */,
+				176FB8331CAE438C00762990 /* TableViewController.swift in Sources */,
 				172BDF011C75CDA20039D98C /* PhotoBrowserView.swift in Sources */,
 				172BDEEE1C75B4670039D98C /* TopMenuViewCell.swift in Sources */,
 				172BDEF81C75CB340039D98C /* MainCollectionViewController.swift in Sources */,

@@ -18,12 +18,13 @@ import MJRefresh
 private let reuseIdentifier = "Cell"
 private let imageBaseUrl = "http://www.dbmeinv.com/dbgroup/rank.htm?pager_offset="
 private let pageBaseUrl = "http://www.dbmeinv.com/dbgroup/show.htm?cid="
-class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, TopMenuDelegate{
+class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, TopMenuDelegate {
     
     var photos = NSMutableOrderedSet()
     var photosBig = NSMutableOrderedSet()
-    //    var layout: MainCollectionViewLayout?
     
+    //    var layout: MainCollectionViewLayout?
+    let mainManu = UIView()
     var isFinished = false
     var populatingPhotos = false{
         didSet{
@@ -37,10 +38,13 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
             }
         }
     }
+    
+    var isOpenedMenu = false
     var currentPage = Int(arc4random_uniform(60) + 2) //PageIndexLocater
     var isGot = false   //Is Got Data
-    var menuView:TopMenuView!
+    var topMenuView:TopMenuView!
     var currentType: PageType = PageType.face
+    var browser:PhotoBrowserView!
     
     var timer = NSTimer()
     
@@ -64,6 +68,9 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         //获取第一页图片
         populatePhotos()
         //        self.collectionView?.header.beginRefreshing()
+        
+        // setup MainMenu
+        setupMainMenu()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -72,7 +79,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func getPageUrl()-> String{
-        return pageBaseUrl + currentType.rawValue + "&pager_offset=" + "\(currentPage)"
+        return pageBaseUrl + currentType.rawValue + "&pager_offset=" + "\(self.currentPage)"
     }
 
     
@@ -80,24 +87,23 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         let navBarHeight = self.navigationController?.navigationBar.frame.height ?? 0.0
         
         // Set Location of TopMenu
-        let menuView = TopMenuView(frame: CGRectMake(0, navBarHeight + topViewHeight - 10, screenSize.width, topViewHeight))
+        topMenuView = TopMenuView(frame: CGRectMake(0, navBarHeight + topViewHeight - 10, screenSize.width, topViewHeight))
         
-        menuView.bgColor = UIColor.whiteColor()
-        menuView.lineColor = UIColor.grayColor()
-        menuView.delegate = self
+        topMenuView.bgColor = UIColor.whiteColor()
+        topMenuView.lineColor = UIColor.grayColor()
+        topMenuView.delegate = self
         //Set Menu Titles
-        menuView.titles = [" Face ", " Stocking ", " Legs ", " Random "]
+        topMenuView.titles = [" Face ", " Stocking ", " Legs ", " Random "]
         
         //Close Scrolltotop
-        menuView.setScrollToTop(false)
-        self.menuView = menuView
-        self.view.addSubview(menuView)
+        topMenuView.setScrollToTop(false)
+        self.view.addSubview(topMenuView)
     }
     
     //  Click Trigger
     func topMenuDidChangedToIndex(index:Int){
         print("Press \(index)")
-        self.navigationItem.title = self.menuView.titles[index] as String
+        self.navigationItem.title = self.topMenuView.titles[index] as String
         
         currentType = PhotoUtil.selectTypeByNumber(index)
         
@@ -153,7 +159,12 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 
 
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (view.bounds.size.width - 30)/2, height: ((view.bounds.size.width - 30)/2)/225.0*300.0)
+        if(view.bounds.size.width > view.bounds.size.height){
+            layout.itemSize = CGSize(width: (view.bounds.size.width - 50)/4, height: ((view.bounds.size.width - 50)/4)/225.0*300.0)
+        } else{
+            layout.itemSize = CGSize(width: (view.bounds.size.width - 50)/3, height: ((view.bounds.size.width - 50)/3)/225.0*300.0)
+        }
+
         
         //print(layout.itemSize)
         layout.minimumInteritemSpacing = 10
@@ -164,14 +175,187 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 
     }
     
+    
+    func doClick(sender:UIPanGestureRecognizer){
+       closingMenu()
+    }
+    
     //Add Navigationitem
     func addBarItem(){
-        let item = UIBarButtonItem(image: UIImage(named: "Del"), style: UIBarButtonItemStyle.Plain, target: self, action: "setting:")
+        let item = UIBarButtonItem(image: UIImage(named: "Del"), style: UIBarButtonItemStyle.Plain, target: self, action: "deletePics:")
         item.tintColor = UIColor.whiteColor()
+        
+        let item2 = UIBarButtonItem(image: UIImage(named: "Menu"), style: UIBarButtonItemStyle.Plain, target: self, action: "openMenu:")
+        item2.tintColor = UIColor.whiteColor()
+        
+        self.navigationItem.leftBarButtonItem = item2
         self.navigationItem.rightBarButtonItem = item
     }
     
-    @IBAction func setting(sender: AnyObject){
+    @IBAction func openMenu(sender: AnyObject){
+        if !isOpenedMenu{
+            openingMenu()
+        } else{
+            closingMenu()
+        }
+    }
+    
+    
+    func setupMainMenu(){
+        mainManu.frame = CGRectMake(-500, topViewHeight * 2, self.view.bounds.size.width * 0.35, self.view.bounds.size.height)
+        mainManu.backgroundColor = UIColor.whiteColor()
+        mainManu.alpha = 0.98
+        mainManu.tag = -1
+
+        // Logo Image
+        let logoImage = UIImage(named: "Logo.png")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.frame = CGRectMake(10, 10, logoImage!.size.width, logoImage!.size.height)
+/*
+        //
+        let animalsButton = UIButton()
+        animalsButton.frame = CGRectMake(10, 10 + logoImage!.size.height, 100, 50)
+        animalsButton.setTitle("Animals", forState: .Normal)
+        animalsButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        animalsButton.addTarget(self, action: "clickAnimals:", forControlEvents: .TouchUpInside)
+        
+        //
+        let landscapeButton = UIButton()
+        landscapeButton.frame = CGRectMake(10, 10 + logoImage!.size.height, 100, 50)
+        landscapeButton.setTitle("Landscape", forState: .Normal)
+        landscapeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        landscapeButton.addTarget(self, action: "clickLandscape:", forControlEvents: .TouchUpInside)
+        
+        //
+        let girlsButton = UIButton()
+        girlsButton.frame = CGRectMake(10, 10 + logoImage!.size.height, 100, 50)
+        girlsButton.setTitle("Girls", forState: .Normal)
+        girlsButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        girlsButton.addTarget(self, action: "clickGirls:", forControlEvents: .TouchUpInside)
+        
+        //
+        let boysButton = UIButton()
+        boysButton.frame = CGRectMake(10, 10 + logoImage!.size.height, 100, 50)
+        boysButton.setTitle("Boys", forState: .Normal)
+        boysButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        boysButton.addTarget(self, action: "clickBoys:", forControlEvents: .TouchUpInside)
+        
+        
+        //
+        let settingButton = UIButton()
+        settingButton.frame = CGRectMake(10, 10 + logoImage!.size.height, 100, 50)
+        settingButton.setTitle("Setting", forState: .Normal)
+        settingButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        settingButton.addTarget(self, action: "clickSetting:", forControlEvents: .TouchUpInside)
+        
+        //
+        let rateButton = UIButton()
+        rateButton.frame = CGRectMake(10, 10 + logoImage!.size.height, 100, 50)
+        rateButton.setTitle("Rate This App", forState: .Normal)
+        rateButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        rateButton.addTarget(self, action: "clickRate:", forControlEvents: .TouchUpInside)
+    
+   
+        
+        
+        self.mainManu.addSubview(animalsButton)
+        self.mainManu.addSubview(landscapeButton)
+        self.mainManu.addSubview(girlsButton)
+        self.mainManu.addSubview(boysButton)
+        self.mainManu.addSubview(settingButton)
+        self.mainManu.addSubview(rateButton)
+        
+*/
+        self.mainManu.addSubview(logoImageView)
+        
+    }
+    
+    //
+    func clickAnimals(sender: UIButton!){
+        print("Animals")
+    }
+    
+    //
+    func clickLandscape(sender: UIButton!){
+        print("Animals")
+    }
+    
+    
+    //
+    func clickGirls(sender: UIButton!){
+        print("Animals")
+    }
+    
+    
+    //
+    func clickBoys(sender: UIButton!){
+        print("Animals")
+    }
+    
+    
+    //
+    func clickSetting(sender: UIButton!){
+        print("Animals")
+    }
+    
+    //
+    func clickRate(sender: UIButton!){
+        print("About")
+    }
+    
+    //
+    func clickAbout(sender: UIButton!){
+        print("About")
+    }
+    
+    
+    
+    
+    
+    
+    
+    func openingMenu(){
+        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Dark))
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.alpha = 0.2
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        isOpenedMenu = true
+        print("openMenu")
+        
+        self.view.addSubview(blurEffectView)
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.mainManu.frame = CGRectMake(0, topViewHeight * 2, self.mainManu.frame.size.width, self.mainManu.frame.size.height)
+            self.topMenuView.frame = CGRectMake(self.mainManu.frame.size.width, self.navigationController!.navigationBar.frame.size.height + 20, UIScreen.mainScreen().bounds.size.width, topViewHeight)
+            self.collectionView?.frame = CGRectMake(10 + self.mainManu.frame.size.width, 0, self.view.frame.width - 20, self.view.frame.height)
+            self.view.addSubview(self.mainManu)
+            }, completion: { (Bool) -> Void in
+                let tap = UITapGestureRecognizer(target: self, action: ("doClick:"))
+                blurEffectView.addGestureRecognizer(tap)
+        })
+        
+    }
+    
+    func closingMenu(){
+        isOpenedMenu = false
+        print("closeMenu")
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.mainManu.frame = CGRectMake(-500, topViewHeight * 2, self.mainManu.frame.size.width, self.mainManu.frame.size.height)
+            self.topMenuView.frame = CGRectMake(0, self.navigationController!.navigationBar.frame.size.height + 20, UIScreen.mainScreen().bounds.size.width, topViewHeight)
+            self.collectionView?.frame = CGRectMake(10, 0, self.view.frame.width - 20, self.view.frame.height)
+            
+            }, completion: { (Bool) -> Void in
+                self.mainManu.removeFromSuperview()
+        })
+        
+        for subview in self.view.subviews as [UIView]{
+            if let v = subview as? UIVisualEffectView{
+                v.removeFromSuperview()
+            }
+        }
+    }
+    
+    // Delete Pics
+    @IBAction func deletePics(sender: AnyObject){
         let alert = UIAlertController(title: "ALERT", message: "Do You Really Want To Clear Cache?", preferredStyle: UIAlertControllerStyle.Alert)
         let cancelAction = UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.Cancel, handler: nil)
         let okAction = UIAlertAction(title: "CONFIRM", style: UIAlertActionStyle.Default, handler: clearCache)
@@ -353,7 +537,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     
     // See Big Pics
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var browser:PhotoBrowserView
         
         // Photo Loading
         browser = PhotoBrowserView.initWithPhotos(withUrlArray: self.photosBig.array)
@@ -366,6 +549,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         
         //Show
         browser.show()
+        
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -399,23 +583,36 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         
         coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in
-            
             let orient = UIApplication.sharedApplication().statusBarOrientation
+    
+            // Do something else
             
             switch orient {
             default:
-                //print("Anything But Portrait")
-                //print(UIScreen.mainScreen().bounds.size)
-                self.menuView.frame = CGRectMake(0.0, self.navigationController!.navigationBar.frame.size.height + 20, UIScreen.mainScreen().bounds.size.width, topViewHeight)
-                // Do something else
+                print(UIScreen.mainScreen().bounds.size)
+                if((self.browser) != nil && !self.browser.exit){
+                    let pageBuffer = self.browser.pageBuffer
+                    self.browser.removeFromSuperview()
+                    self.browser = PhotoBrowserView.initWithPhotos(withUrlArray: self.photosBig.array)
+                    // Remote Type
+                    self.browser.sourceType = SourceType.REMOTE
+                    self.browser.index = pageBuffer
+                    self.browser.show()
+                }
+
+                
+                self.collectionView?.frame = CGRectMake(10, 0, self.view.frame.width - 20, self.view.frame.height)
+                
+                
+                self.topMenuView.frame = CGRectMake(0.0, self.navigationController!.navigationBar.frame.size.height + 20, UIScreen.mainScreen().bounds.size.width, topViewHeight)
             }
             
             }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-                //print("rotation completed")
         })
         
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
+    
     
     
 }

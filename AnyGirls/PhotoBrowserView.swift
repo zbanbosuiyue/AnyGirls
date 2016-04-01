@@ -18,14 +18,14 @@ enum SourceType{
 
 class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDataSource, BrowserCellDelagate {
 
+
     var collectionView: UICollectionView?
     let cellIdentifier = "Cell"
     var photos = NSMutableOrderedSet()
     
     //Show Page Number
     var title: UILabel?
-    //Close Button
-    var close: UIButton?
+
     //Download Button
     var downloadButton: UIButton?
 
@@ -35,13 +35,18 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
     let count = CGFloat(14)
     var heightUnit: CGFloat?
     var layout: UICollectionViewFlowLayout?
+    var pageBuffer = 0
+    var exit = false;
+    var mixedIndicator: RMDownloadIndicator!
     
     // Indexing
     var index: Int?{
         didSet{
+            pageBuffer = index!
             title?.text = "\(index! + 1)/\(photos.count)"
             let indexPath = NSIndexPath(forRow: index!, inSection: 0)
             collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: false)
+            
         }
     }
     
@@ -51,7 +56,6 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
     }
 
     override init(frame: CGRect) {
-        print("init")
         super.init(frame: frame)
         setupView(frame)
     }
@@ -61,7 +65,6 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         let view = PhotoBrowserView(frame: (UIApplication.sharedApplication().keyWindow?.frame)!)
         //print("\((UIApplication.sharedApplication().keyWindow?.frame))")
         view.photos.addObjectsFromArray(array)
-        print("initWithPhotos")
         return view
     }
     
@@ -105,14 +108,7 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         
         addSubview(title!)
     }
-    // Add Close Button
-    func addCloseBtn(frame: CGRect) {
-        close = UIButton(frame: CGRect(x: 8, y: 5.0, width: 30, height: heightUnit!))
-        let image = UIImage(named: "close")
-        close?.setImage(image, forState: UIControlState.Normal)
-        close?.addTarget(self, action: Selector("close:"), forControlEvents: UIControlEvents.TouchUpInside)
-        addSubview(close!)
-    }
+
 
     // Add Download Button
     func addDownloadButton(frame: CGRect){
@@ -148,13 +144,10 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         let pageWidth = scrollView.frame.size.width
         let page = Int((floor(scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1) + 1
         title?.text = "\(page)/\(photos.count)"
+        pageBuffer = page - 1
         
     }
-    // Close it self
-    func close(sender: UIButton) {
-        self.removeFromSuperview()
-    }
-    
+
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -176,10 +169,16 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
 
     func singleTap() {
         self.removeFromSuperview()
+        exit = true
     }
     
     // Setup Cell
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        if((mixedIndicator) != nil){
+            mixedIndicator.removeFromSuperview()
+        }
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoBrowserCell
         cell.delegate = self
         let url = NSURL(string: photos.objectAtIndex(indexPath.row) as! String)!
@@ -189,29 +188,28 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         cell.imageView.frame = CGRect(x: frame.width*(1 - percent)/2, y: frame.height*(1 - percent)/2, width: frame.width*percent, height: frame.height*percent)
         if sourceType == SourceType.REMOTE{
             //progress bar
-            let mixedIndicator: RMDownloadIndicator = RMDownloadIndicator(rectframe: CGRectMake(CGRectGetWidth(self.bounds)/2 - 30, CGRectGetMaxY(self.bounds)/2 - 30, 60, 60), type: RMIndicatorType.kRMMixedIndictor)
-            mixedIndicator.backgroundColor = UIColor.clearColor()
-            mixedIndicator.fillColor = UIColor.blueColor().colorWithAlphaComponent(0.1)
-            mixedIndicator.strokeColor = UIColor.mainColor()
+            mixedIndicator = RMDownloadIndicator(rectframe: CGRectMake(CGRectGetWidth(self.bounds)/2 - 30, CGRectGetMaxY(self.bounds)/2 - 30, 60, 60), type: RMIndicatorType.kRMMixedIndictor)
+            mixedIndicator.backgroundColor = UIColor(white: 1, alpha: 0)
+            mixedIndicator.fillColor = UIColor.purpleColor()
+            mixedIndicator.strokeColor = UIColor(white: 1, alpha: 0)
             mixedIndicator.closedIndicatorBackgroundStrokeColor = UIColor.mainColor()
             mixedIndicator.radiusPercent = 0.45
+            mixedIndicator.alpha = 0.6
             mixedIndicator.loadIndicator()
             
+            
             cell.imageView.sd_setImageWithURL(url, placeholderImage: nil, options: SDWebImageOptions.TransformAnimatedImage, progress: { (received, total) -> Void in
-                //没有缓存过，加入progress bar
                 if received != 0{
-                    if !self.subviews.contains(mixedIndicator){
-                        //print("bb")
-                        self.addSubview(mixedIndicator)
+                    if !self.subviews.contains(self.mixedIndicator){
+                        self.addSubview(self.mixedIndicator)
                     }
                 }
                 
-                mixedIndicator.updateWithTotalBytes(CGFloat(total), downloadedBytes: CGFloat(received))
-                //print("load")
+                self.mixedIndicator.updateWithTotalBytes(CGFloat(total), downloadedBytes: CGFloat(received))
                 
                 }, completed: { (image, error, cacheType, url) -> Void in
                     
-                    mixedIndicator.removeFromSuperview()
+                    self.mixedIndicator.removeFromSuperview()
                     if image == nil{
                         print("Error")
                         cell.imageView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
@@ -220,6 +218,7 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
                         return
                     }
                 })
+            
         }
         
         else{
@@ -252,5 +251,7 @@ class PhotoBrowserView: UIView, UICollectionViewDelegate, UIScrollViewDelegate, 
         hud.showInView(self, animated: true)
         hud.dismissAfterDelay(interval, animated: true)
     }
+    
+    
 
 }
