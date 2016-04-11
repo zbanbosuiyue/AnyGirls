@@ -39,10 +39,11 @@ class TopMenuViewCell: UICollectionViewCell {
         let titleLabel = UILabel()
         titleLabel.textAlignment = NSTextAlignment.Center
         
-        titleLabel.font = UIFont.systemFontOfSize(14)
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
         self.addSubview(titleLabel)
         self.titleLabel = titleLabel
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.titleLabel?.frame = self.bounds

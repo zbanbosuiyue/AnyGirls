@@ -23,7 +23,11 @@
 		172BDF001C75CDA20039D98C /* PhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFC1C75CDA20039D98C /* PhotoBrowserCell.swift */; };
 		172BDF011C75CDA20039D98C /* PhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */; };
 		172BDF031C75CE470039D98C /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */; };
-		176FB8331CAE438C00762990 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176FB8321CAE438C00762990 /* TableViewController.swift */; };
+		176FB8331CAE438C00762990 /* TableMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176FB8321CAE438C00762990 /* TableMenuView.swift */; };
+		E15599521CB8AECF004FC526 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15599511CB8AECF004FC526 /* SettingViewController.swift */; };
+		E176E5071CB9912E00C57AB3 /* RateUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176E5061CB9912E00C57AB3 /* RateUsViewController.swift */; };
+		E176E5091CB9913E00C57AB3 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176E5081CB9913E00C57AB3 /* AboutUsViewController.swift */; };
+		E176E50B1CB9915000C57AB3 /* ShareUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176E50A1CB9915000C57AB3 /* ShareUsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,16 +49,16 @@
 
 /* Begin PBXFileReference section */
 		0233A9075153C2911B9D87C5 /* Pods-AnyGirls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyGirls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyGirls/Pods-AnyGirls.debug.xcconfig"; sourceTree = "<group>"; };
-		172BDEB21C75AF340039D98C /* AnyGirls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyGirls.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		172BDEB21C75AF340039D98C /* AnyImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		172BDEB51C75AF340039D98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		172BDEBA1C75AF340039D98C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		172BDEBC1C75AF340039D98C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		172BDEBF1C75AF340039D98C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		172BDEC11C75AF340039D98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		172BDEC61C75AF340039D98C /* AnyGirlsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyGirlsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		172BDEC61C75AF340039D98C /* AnyImages.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyImages.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		172BDECA1C75AF340039D98C /* AnyGirlsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGirlsTests.swift; sourceTree = "<group>"; };
 		172BDECC1C75AF340039D98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		172BDED11C75AF340039D98C /* AnyGirlsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyGirlsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		172BDED11C75AF340039D98C /* AnyImages.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyImages.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		172BDED51C75AF340039D98C /* AnyGirlsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGirlsUITests.swift; sourceTree = "<group>"; };
 		172BDED71C75AF340039D98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		172BDEE71C75B20F0039D98C /* TopMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuView.swift; sourceTree = "<group>"; };
@@ -66,9 +70,13 @@
 		172BDEFC1C75CDA20039D98C /* PhotoBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserCell.swift; sourceTree = "<group>"; };
 		172BDEFD1C75CDA20039D98C /* PhotoBrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserView.swift; sourceTree = "<group>"; };
 		172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
-		176FB8321CAE438C00762990 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		176FB8321CAE438C00762990 /* TableMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableMenuView.swift; sourceTree = "<group>"; };
 		B12AB556BBCAFFFADFB17FE9 /* Pods-AnyGirls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyGirls.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyGirls/Pods-AnyGirls.release.xcconfig"; sourceTree = "<group>"; };
 		CF6C29D1A8336E210E18AB84 /* Pods_AnyGirls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyGirls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E15599511CB8AECF004FC526 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		E176E5061CB9912E00C57AB3 /* RateUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateUsViewController.swift; sourceTree = "<group>"; };
+		E176E5081CB9913E00C57AB3 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		E176E50A1CB9915000C57AB3 /* ShareUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareUsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +108,9 @@
 		172BDEA91C75AF340039D98C = {
 			isa = PBXGroup;
 			children = (
-				172BDEB41C75AF340039D98C /* AnyGirls */,
-				172BDEC91C75AF340039D98C /* AnyGirlsTests */,
-				172BDED41C75AF340039D98C /* AnyGirlsUITests */,
+				172BDEB41C75AF340039D98C /* AnyImages */,
+				172BDEC91C75AF340039D98C /* AnyImagesTests */,
+				172BDED41C75AF340039D98C /* AnyImagesUITests */,
 				172BDEB31C75AF340039D98C /* Products */,
 				4B69C4198FB0A491310AB0A6 /* Pods */,
 				3E12747ECE35762B391DA0E7 /* Frameworks */,
@@ -112,45 +120,46 @@
 		172BDEB31C75AF340039D98C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				172BDEB21C75AF340039D98C /* AnyGirls.app */,
-				172BDEC61C75AF340039D98C /* AnyGirlsTests.xctest */,
-				172BDED11C75AF340039D98C /* AnyGirlsUITests.xctest */,
+				172BDEB21C75AF340039D98C /* AnyImages.app */,
+				172BDEC61C75AF340039D98C /* AnyImages.xctest */,
+				172BDED11C75AF340039D98C /* AnyImages.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		172BDEB41C75AF340039D98C /* AnyGirls */ = {
+		172BDEB41C75AF340039D98C /* AnyImages */ = {
 			isa = PBXGroup;
 			children = (
-				176FB82D1CAE423300762990 /* TableMenu */,
 				172BDEEB1C75B3520039D98C /* Header.swift */,
-				172BDEF91C75CD850039D98C /* Browser */,
-				172BDEF61C75CB0D0039D98C /* Controller */,
-				172BDEE31C75B1190039D98C /* TopScrollMenu */,
+				E176E5021CB98AFA00C57AB3 /* Components */,
+				E176E5011CB98ACE00C57AB3 /* ControllerAndCell */,
 				172BDEB51C75AF340039D98C /* AppDelegate.swift */,
 				172BDEB91C75AF340039D98C /* Main.storyboard */,
 				172BDEBC1C75AF340039D98C /* Assets.xcassets */,
 				172BDEBE1C75AF340039D98C /* LaunchScreen.storyboard */,
 				172BDEC11C75AF340039D98C /* Info.plist */,
 			);
+			name = AnyImages;
 			path = AnyGirls;
 			sourceTree = "<group>";
 		};
-		172BDEC91C75AF340039D98C /* AnyGirlsTests */ = {
+		172BDEC91C75AF340039D98C /* AnyImagesTests */ = {
 			isa = PBXGroup;
 			children = (
 				172BDECA1C75AF340039D98C /* AnyGirlsTests.swift */,
 				172BDECC1C75AF340039D98C /* Info.plist */,
 			);
+			name = AnyImagesTests;
 			path = AnyGirlsTests;
 			sourceTree = "<group>";
 		};
-		172BDED41C75AF340039D98C /* AnyGirlsUITests */ = {
+		172BDED41C75AF340039D98C /* AnyImagesUITests */ = {
 			isa = PBXGroup;
 			children = (
 				172BDED51C75AF340039D98C /* AnyGirlsUITests.swift */,
 				172BDED71C75AF340039D98C /* Info.plist */,
 			);
+			name = AnyImagesUITests;
 			path = AnyGirlsUITests;
 			sourceTree = "<group>";
 		};
@@ -163,13 +172,13 @@
 			name = TopScrollMenu;
 			sourceTree = "<group>";
 		};
-		172BDEF61C75CB0D0039D98C /* Controller */ = {
+		172BDEF61C75CB0D0039D98C /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				172BDEF71C75CB340039D98C /* MainCollectionViewController.swift */,
 				172BDF021C75CE470039D98C /* MainCollectionViewCell.swift */,
 			);
-			name = Controller;
+			name = Main;
 			sourceTree = "<group>";
 		};
 		172BDEF91C75CD850039D98C /* Browser */ = {
@@ -186,7 +195,7 @@
 		176FB82D1CAE423300762990 /* TableMenu */ = {
 			isa = PBXGroup;
 			children = (
-				176FB8321CAE438C00762990 /* TableViewController.swift */,
+				176FB8321CAE438C00762990 /* TableMenuView.swift */,
 			);
 			name = TableMenu;
 			sourceTree = "<group>";
@@ -208,12 +217,66 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E155994E1CB8A651004FC526 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E15599511CB8AECF004FC526 /* SettingViewController.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		E176E5011CB98ACE00C57AB3 /* ControllerAndCell */ = {
+			isa = PBXGroup;
+			children = (
+				E155994E1CB8A651004FC526 /* Setting */,
+				E176E5051CB98B5E00C57AB3 /* ShareUs */,
+				E176E5041CB98B5000C57AB3 /* AboutUs */,
+				E176E5031CB98B3000C57AB3 /* RateUs */,
+				172BDEF61C75CB0D0039D98C /* Main */,
+			);
+			name = ControllerAndCell;
+			sourceTree = "<group>";
+		};
+		E176E5021CB98AFA00C57AB3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				172BDEE31C75B1190039D98C /* TopScrollMenu */,
+				172BDEF91C75CD850039D98C /* Browser */,
+				176FB82D1CAE423300762990 /* TableMenu */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		E176E5031CB98B3000C57AB3 /* RateUs */ = {
+			isa = PBXGroup;
+			children = (
+				E176E5061CB9912E00C57AB3 /* RateUsViewController.swift */,
+			);
+			name = RateUs;
+			sourceTree = "<group>";
+		};
+		E176E5041CB98B5000C57AB3 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				E176E5081CB9913E00C57AB3 /* AboutUsViewController.swift */,
+			);
+			name = AboutUs;
+			sourceTree = "<group>";
+		};
+		E176E5051CB98B5E00C57AB3 /* ShareUs */ = {
+			isa = PBXGroup;
+			children = (
+				E176E50A1CB9915000C57AB3 /* ShareUsViewController.swift */,
+			);
+			name = ShareUs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		172BDEB11C75AF340039D98C /* AnyGirls */ = {
+		172BDEB11C75AF340039D98C /* AnyImages */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 172BDEDA1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirls" */;
+			buildConfigurationList = 172BDEDA1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyImages" */;
 			buildPhases = (
 				1CB4E5BFFA35AD0DBF695F0A /* Check Pods Manifest.lock */,
 				172BDEAE1C75AF340039D98C /* Sources */,
@@ -226,14 +289,14 @@
 			);
 			dependencies = (
 			);
-			name = AnyGirls;
+			name = AnyImages;
 			productName = AnyGirls;
-			productReference = 172BDEB21C75AF340039D98C /* AnyGirls.app */;
+			productReference = 172BDEB21C75AF340039D98C /* AnyImages.app */;
 			productType = "com.apple.product-type.application";
 		};
-		172BDEC51C75AF340039D98C /* AnyGirlsTests */ = {
+		172BDEC51C75AF340039D98C /* AnyImagesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 172BDEDD1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsTests" */;
+			buildConfigurationList = 172BDEDD1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyImagesTests" */;
 			buildPhases = (
 				172BDEC21C75AF340039D98C /* Sources */,
 				172BDEC31C75AF340039D98C /* Frameworks */,
@@ -244,14 +307,14 @@
 			dependencies = (
 				172BDEC81C75AF340039D98C /* PBXTargetDependency */,
 			);
-			name = AnyGirlsTests;
+			name = AnyImagesTests;
 			productName = AnyGirlsTests;
-			productReference = 172BDEC61C75AF340039D98C /* AnyGirlsTests.xctest */;
+			productReference = 172BDEC61C75AF340039D98C /* AnyImages.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		172BDED01C75AF340039D98C /* AnyGirlsUITests */ = {
+		172BDED01C75AF340039D98C /* AnyImagesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 172BDEE01C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsUITests" */;
+			buildConfigurationList = 172BDEE01C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyImagesUITests" */;
 			buildPhases = (
 				172BDECD1C75AF340039D98C /* Sources */,
 				172BDECE1C75AF340039D98C /* Frameworks */,
@@ -262,9 +325,9 @@
 			dependencies = (
 				172BDED31C75AF340039D98C /* PBXTargetDependency */,
 			);
-			name = AnyGirlsUITests;
+			name = AnyImagesUITests;
 			productName = AnyGirlsUITests;
-			productReference = 172BDED11C75AF340039D98C /* AnyGirlsUITests.xctest */;
+			productReference = 172BDED11C75AF340039D98C /* AnyImages.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -291,7 +354,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 172BDEAD1C75AF340039D98C /* Build configuration list for PBXProject "AnyGirls" */;
+			buildConfigurationList = 172BDEAD1C75AF340039D98C /* Build configuration list for PBXProject "AnyImages" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -304,9 +367,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				172BDEB11C75AF340039D98C /* AnyGirls */,
-				172BDEC51C75AF340039D98C /* AnyGirlsTests */,
-				172BDED01C75AF340039D98C /* AnyGirlsUITests */,
+				172BDEB11C75AF340039D98C /* AnyImages */,
+				172BDEC51C75AF340039D98C /* AnyImagesTests */,
+				172BDED01C75AF340039D98C /* AnyImagesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -391,13 +454,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E176E50B1CB9915000C57AB3 /* ShareUsViewController.swift in Sources */,
 				172BDEEC1C75B3520039D98C /* Header.swift in Sources */,
 				172BDF001C75CDA20039D98C /* PhotoBrowserCell.swift in Sources */,
 				172BDEFE1C75CDA20039D98C /* BrowserCellDelegate.swift in Sources */,
 				172BDEE81C75B20F0039D98C /* TopMenuView.swift in Sources */,
+				E176E5091CB9913E00C57AB3 /* AboutUsViewController.swift in Sources */,
 				172BDF031C75CE470039D98C /* MainCollectionViewCell.swift in Sources */,
 				172BDEFF1C75CDA20039D98C /* RMDownloadIndicator.swift in Sources */,
-				176FB8331CAE438C00762990 /* TableViewController.swift in Sources */,
+				E15599521CB8AECF004FC526 /* SettingViewController.swift in Sources */,
+				E176E5071CB9912E00C57AB3 /* RateUsViewController.swift in Sources */,
+				176FB8331CAE438C00762990 /* TableMenuView.swift in Sources */,
 				172BDF011C75CDA20039D98C /* PhotoBrowserView.swift in Sources */,
 				172BDEEE1C75B4670039D98C /* TopMenuViewCell.swift in Sources */,
 				172BDEF81C75CB340039D98C /* MainCollectionViewController.swift in Sources */,
@@ -426,12 +493,12 @@
 /* Begin PBXTargetDependency section */
 		172BDEC81C75AF340039D98C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 172BDEB11C75AF340039D98C /* AnyGirls */;
+			target = 172BDEB11C75AF340039D98C /* AnyImages */;
 			targetProxy = 172BDEC71C75AF340039D98C /* PBXContainerItemProxy */;
 		};
 		172BDED31C75AF340039D98C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 172BDEB11C75AF340039D98C /* AnyGirls */;
+			target = 172BDEB11C75AF340039D98C /* AnyImages */;
 			targetProxy = 172BDED21C75AF340039D98C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -550,8 +617,8 @@
 				INFOPLIST_FILE = AnyGirls/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.6lovely.AnyGirls;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.6lovely.AnyImages;
+				PRODUCT_NAME = AnyImages;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -567,8 +634,8 @@
 				INFOPLIST_FILE = AnyGirls/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.6lovely.AnyGirls;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.6lovely.AnyImages;
+				PRODUCT_NAME = AnyImages;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -580,8 +647,8 @@
 				INFOPLIST_FILE = AnyGirlsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyGirls.app/AnyGirls";
+				PRODUCT_NAME = AnyImages;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyImages.app/AnyImages";
 			};
 			name = Debug;
 		};
@@ -592,8 +659,8 @@
 				INFOPLIST_FILE = AnyGirlsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyGirls.app/AnyGirls";
+				PRODUCT_NAME = AnyImages;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyImages.app/AnyImages";
 			};
 			name = Release;
 		};
@@ -603,7 +670,7 @@
 				INFOPLIST_FILE = AnyGirlsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AnyImages;
 				TEST_TARGET_NAME = AnyGirls;
 				USES_XCTRUNNER = YES;
 			};
@@ -615,7 +682,7 @@
 				INFOPLIST_FILE = AnyGirlsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhengfood.AnyGirlsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AnyImages;
 				TEST_TARGET_NAME = AnyGirls;
 				USES_XCTRUNNER = YES;
 			};
@@ -624,7 +691,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		172BDEAD1C75AF340039D98C /* Build configuration list for PBXProject "AnyGirls" */ = {
+		172BDEAD1C75AF340039D98C /* Build configuration list for PBXProject "AnyImages" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				172BDED81C75AF340039D98C /* Debug */,
@@ -633,7 +700,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		172BDEDA1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirls" */ = {
+		172BDEDA1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyImages" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				172BDEDB1C75AF340039D98C /* Debug */,
@@ -642,7 +709,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		172BDEDD1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsTests" */ = {
+		172BDEDD1C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyImagesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				172BDEDE1C75AF340039D98C /* Debug */,
@@ -651,7 +718,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		172BDEE01C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyGirlsUITests" */ = {
+		172BDEE01C75AF340039D98C /* Build configuration list for PBXNativeTarget "AnyImagesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				172BDEE11C75AF340039D98C /* Debug */,

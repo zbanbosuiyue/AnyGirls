@@ -7,17 +7,17 @@
 //
 
 import UIKit
-private let reuseIdentifier = "Cell"
 
 
 let topViewHeight: CGFloat = 30.0
+
 
 protocol TopMenuDelegate {
     func topMenuDidChangedToIndex(index:Int)
 }
 
 class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    private var collection: UICollectionView?
+    var collection: UICollectionView!
     private var flowLayout: UICollectionViewFlowLayout?
     private var lineView: UIView?
     
@@ -33,15 +33,16 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     // Deletgate to TopMenuDelegate
     var delegate: TopMenuDelegate?
     
+    // Current Index
+    var currentIndex = 0
+    var currentCell:TopMenuViewCell!
+    var lastIndexPath: NSIndexPath!
     
-    init() {
-        super.init(frame: CGRectMake(0.0, statusHeight, screenSize.width, topViewHeight))
-        self.setupCollectionView()
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupCollectionView()
+        
     }
     
     func setScrollToTop(value: Bool){
@@ -58,16 +59,15 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         self.flowLayout = flowLayout
         
         // Init CollectionView
-        let collection = UICollectionView(frame: CGRectZero, collectionViewLayout: flowLayout)
+        collection = UICollectionView(frame: self.frame, collectionViewLayout: flowLayout)
         collection.delegate = self
         collection.dataSource = self
         collection.bounces = true
-        collection.backgroundColor = UIColor.clearColor()
+        collection.backgroundColor = UIColor.whiteColor()
         collection.showsHorizontalScrollIndicator = false
         collection.showsVerticalScrollIndicator = false
+
         self.addSubview(collection)
-        
-        self.collection = collection
         
         //Init Menu Line
         let bottomView = UIView()
@@ -78,13 +78,29 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         // Register Cell
         self.collection?.registerClass(TopMenuViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
-    
+
     override func layoutSubviews() {
         self.backgroundColor = bgColor ?? UIColor.whiteColor()
         self.collection?.frame = self.bounds
-        self.lineView!.frame = CGRectMake(2, topViewHeight - 2, self.titles[0].sizeByFont(UIFont.systemFontOfSize(14)).width + 20, 2);
+        var a = CGFloat(2)
+        if currentCell != nil{
+            a = currentCell!.frame.origin.x
+        }
+        
+        let orient = UIApplication.sharedApplication().statusBarOrientation
+        switch orient{
+        default:
+            if lastIndexPath != nil && collection.cellForItemAtIndexPath(lastIndexPath) != nil {
+                let cell = collection.cellForItemAtIndexPath(lastIndexPath)!
+                let width = CGRectGetMaxX(cell.frame)
+                if width < UIScreen.mainScreen().bounds.size.width {
+                    self.setCollectionFrame(cell.frame)
+                }
+            }
+        }
+        self.lineView!.frame = CGRectMake(a, topViewHeight - 2, self.titles[currentIndex].sizeByFont(UIFont.systemFontOfSize(14)).width + 20, 2);
     }
-    
+
     //CollectionViewDataSource method
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return self.titles.count;
@@ -99,8 +115,9 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         
         if indexPath.item == self.titles.count-1 {
             let width = CGRectGetMaxX(cell.frame)
+            lastIndexPath = indexPath
             
-            if width < screenSize.width {
+            if width < UIScreen.mainScreen().bounds.size.width {
                 self.setCollectionFrame(cell.frame)
             }
         }
@@ -111,27 +128,29 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     func setCollectionFrame(lastItemFrame : CGRect){
         let cWidth:CGFloat = CGRectGetMaxX(lastItemFrame)
         let cHeight:CGFloat = topViewHeight
-        let cX:CGFloat = (screenSize.width - cWidth)/2.0
+        let cX:CGFloat = (UIScreen.mainScreen().bounds.width - cWidth)/2.0
         let cY:CGFloat = self.bounds.origin.y
-        self.collection?.frame = CGRectMake(cX, cY, cWidth, cHeight)
+        self.collection!.frame = CGRectMake(cX, cY, cWidth, cHeight)
     }
     
     // UICollectionViewDelegate method
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        print("Move")
         self.moveTopMenu(indexPath)
-        
+        currentIndex = indexPath.item
         // When Click Menu Trigger
-        self.delegate?.topMenuDidChangedToIndex(indexPath.item)
+        self.delegate!.topMenuDidChangedToIndex(indexPath.item)
         
     }
     
     // When Click Move Menu
     func moveTopMenu(indexPath: NSIndexPath){
+        print("a")
         let cell = self.collection!.cellForItemAtIndexPath(indexPath) as? TopMenuViewCell
         UIView.animateWithDuration(0.25) { () -> Void in
             self.lineView!.frame = CGRectMake(cell!.frame.origin.x, cell!.frame.size.height-2, cell!.frame.size.width , 2);
         }
+        currentCell = cell
         
         var nextIndexPath = NSIndexPath(forItem: indexPath.item+2, inSection: 0)
         if nextIndexPath.item > self.titles.count-1 {
@@ -145,10 +164,11 @@ class TopMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         
         if let visibleItem = visibleItems  {
             if !contains(visibleItem, value: nextIndexPath) || nextIndexPath.item == self.titles.count-1 {
-                //print("do")
+                print("do")
                 self.collection?.scrollToItemAtIndexPath(nextIndexPath, atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
             }
             if !contains(visibleItem, value: lastIndexPath) || lastIndexPath.item == 0 {
+                print("yy")
                 self.collection?.scrollToItemAtIndexPath(lastIndexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
             }
         }
